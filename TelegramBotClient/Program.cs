@@ -27,7 +27,7 @@ async Task OnMessage(Message msg, UpdateType type)
     if (msg.Text == "/start")
     {
         await bot.SendMessage(msg.Chat, "Привутствую! Выбери одиз из путей",
-            replyMarkup: new InlineKeyboardMarkup().AddButtons("На хуй", "На лицо"));
+            replyMarkup: new InlineKeyboardMarkup().AddButtons("Право", "Лево"));
     }
 }
 
@@ -36,15 +36,15 @@ async Task OnUpdate(Update update)
 {
     if (update is { CallbackQuery: { } query }) // non-null CallbackQuery
     {
-        if (query.Data == "На хуй")
+        if (query.Data == "Право")
         {
             await bot.AnswerCallbackQuery(query.Id, $"Вы выбрали {query.Data}");
-            await bot.SendMessage(query.Message!.Chat, $"Присаживайтесь, все готово для приятной посиделки))");
+            await bot.SendMessage(query.Message!.Chat, $"Направо пойдешь счатье найдешь!");
         }
         else
         {
             await bot.AnswerCallbackQuery(query.Id, $"Вы выбрали {query.Data}");
-            await bot.SendMessage(query.Message!.Chat, $"А вы авантюрная мадам, прошу пройдемте))");
+            await bot.SendMessage(query.Message!.Chat, $"Налево пойдешь разработчиком станешь!");
         }
     }
 }
